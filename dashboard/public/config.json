@@ -1,0 +1,27 @@
+{
+  "logChannelId": "1510708042239574047",
+  "mcbanChannelId": "1510723354586255410",
+  "ticketCategoryId": "1510723511360950322",
+  "ticketOptions": [
+    {
+      "id": "support",
+      "label": "🛠️ General Support",
+      "description": "I need help with something"
+    },
+    {
+      "id": "report",
+      "label": "🚨 Report a Player",
+      "description": "Report a rule-breaking player"
+    },
+    {
+      "id": "appeal",
+      "label": "⚖️ Ban / Mute Appeal",
+      "description": "Appeal a punishment"
+    },
+    {
+      "id": "purchase",
+      "label": "💎 Purchase Issue",
+      "description": "Problem with a rank/store item"
+    }
+  ]
+}

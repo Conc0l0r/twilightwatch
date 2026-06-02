@@ -1,0 +1,114 @@
+[
+  {
+    "action": "TICKET_OPEN",
+    "guildId": "1499435485934784642",
+    "userId": "755846180923113592",
+    "username": "conc0lor",
+    "modId": null,
+    "modName": null,
+    "reason": "Ticket #4: 🚨 Report a Player",
+    "extra": {
+      "ticketId": "1780324775787"
+    },
+    "id": "1780324775790",
+    "timestamp": "2026-06-01T14:39:35.790Z"
+  },
+  {
+    "action": "TICKET_CLOSE",
+    "guildId": "1499435485934784642",
+    "userId": "755846180923113592",
+    "username": "conc0lor",
+    "modId": "755846180923113592",
+    "modName": "conc0lor",
+    "reason": "asd — asdasd",
+    "extra": {
+      "ticketId": "1780255655397",
+      "ticketNumber": 3
+    },
+    "id": "1780324765094",
+    "timestamp": "2026-06-01T14:39:25.094Z"
+  },
+  {
+    "action": "TICKET_OPEN",
+    "guildId": "1499435485934784642",
+    "userId": "755846180923113592",
+    "username": "conc0lor",
+    "modId": null,
+    "modName": null,
+    "reason": "Ticket #3: 🚨 Report a Player",
+    "extra": {
+      "ticketId": "1780255655397"
+    },
+    "id": "1780255655400",
+    "timestamp": "2026-05-31T19:27:35.400Z"
+  },
+  {
+    "action": "TICKET_CLOSE",
+    "guildId": "1499435485934784642",
+    "userId": "755846180923113592",
+    "username": "conc0lor",
+    "modId": "755846180923113592",
+    "modName": "conc0lor",
+    "reason": "con — fsdfsdfsdf",
+    "extra": {
+      "ticketId": "1780255194982",
+      "ticketNumber": 1
+    },
+    "id": "1780255627842",
+    "timestamp": "2026-05-31T19:27:07.842Z"
+  },
+  {
+    "action": "TICKET_CLOSE",
+    "guildId": "1499435485934784642",
+    "userId": "897377533450936340",
+    "username": "aurora3298",
+    "modId": "897377533450936340",
+    "modName": "aurora3298",
+    "reason": "user — banned",
+    "extra": {
+      "ticketId": "1780255359727",
+      "ticketNumber": 2
+    },
+    "id": "1780255382840",
+    "timestamp": "2026-05-31T19:23:02.840Z"
+  },
+  {
+    "action": "TICKET_OPEN",
+    "guildId": "1499435485934784642",
+    "userId": "897377533450936340",
+    "username": "aurora3298",
+    "modId": null,
+    "modName": null,
+    "reason": "Ticket #2: 🚨 Report a Player",
+    "extra": {
+      "ticketId": "1780255359727"
+    },
+    "id": "1780255359730",
+    "timestamp": "2026-05-31T19:22:39.730Z"
+  },
+  {
+    "action": "JOIN",
+    "guildId": "1499435485934784642",
+    "userId": "897377533450936340",
+    "username": "aurora3298",
+    "modId": null,
+    "modName": null,
+    "reason": "Joined server",
+    "id": "1780255312207",
+    "timestamp": "2026-05-31T19:21:52.207Z"
+  },
+  {
+    "action": "TICKET_OPEN",
+    "guildId": "1499435485934784642",
+    "userId": "755846180923113592",
+    "username": "conc0lor",
+    "modId": null,
+    "modName": null,
+    "reason": "Ticket #1: 🚨 Report a Player",
+    "extra": {
+      "ticketId": "1780255194982"
+    },
+    "id": "1780255194985",
+    "timestamp": "2026-05-31T19:19:54.985Z"
+  }
+]

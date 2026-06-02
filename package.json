@@ -1,0 +1,25 @@
+{
+  "name": "twilightsmp-modbot",
+  "version": "2.0.0",
+  "description": "TwilightSMP full-featured moderation bot with ticket system and dashboard",
+  "main": "bot/index.js",
+  "scripts": {
+    "start:bot": "node bot/index.js",
+    "start:dashboard": "node dashboard/server.js",
+    "dev:bot": "nodemon bot/index.js",
+    "dev:dashboard": "nodemon dashboard/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
