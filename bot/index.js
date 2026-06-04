@@ -280,6 +280,18 @@ const commands = [
     .setDescription('Close this support ticket')
     .addStringOption(o => o.setName('closed_by').setDescription('"Closed by" label (REQUIRED)').setRequired(true))
     .addStringOption(o => o.setName('final_word').setDescription('Final verdict / closing notes (REQUIRED)').setRequired(true)),
+
+    // EMBED
+  new SlashCommandBuilder()
+    .setName('embed')
+    .setDescription('Send a custom embed to a channel')
+    .addStringOption(o => o.setName('title').setDescription('Embed title').setRequired(true))
+    .addStringOption(o => o.setName('description').setDescription('Embed description').setRequired(true))
+    .addStringOption(o => o.setName('color').setDescription('Color: red, green, yellow, purple, blue, orange, pink').setRequired(false))
+    .addChannelOption(o => o.setName('channel').setDescription('Channel to send to (defaults to current)').setRequired(false))
+    .addStringOption(o => o.setName('footer').setDescription('Footer text').setRequired(false))
+    .addStringOption(o => o.setName('image').setDescription('Image URL').setRequired(false))
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 ];
 
 // ─── Client setup ─────────────────────────────────────────────────────────────
@@ -733,6 +745,35 @@ async function handleSlashCommand(interaction) {
         }
       } catch {}
     }, 5000);
+  }
+
+
+  // ── EMBED ──
+  if (commandName === 'embed') {
+    const title       = interaction.options.getString('title');
+    const description = interaction.options.getString('description');
+    const colorKey    = interaction.options.getString('color') ?? 'purple';
+    const channel     = interaction.options.getChannel('channel') ?? interaction.channel;
+    const footer      = interaction.options.getString('footer');
+    const imageUrl    = interaction.options.getString('image');
+
+    const color = COLORS[colorKey] ?? COLORS.purple;
+
+    const embed = new EmbedBuilder()
+      .setColor(color)
+      .setTitle(title)
+      .setDescription(description)
+      .setTimestamp();
+
+    if (footer)   embed.setFooter({ text: footer });
+    if (imageUrl) embed.setImage(imageUrl);
+
+    try {
+      await channel.send({ embeds: [embed] });
+      return interaction.reply({ embeds: [successEmbed(`Embed sent to <#${channel.id}>`)], ephemeral: true });
+    } catch {
+      return interaction.reply({ embeds: [errorEmbed('Failed to send embed. Do I have permission to post in that channel?')], ephemeral: true });
+    }
   }
 }
 
