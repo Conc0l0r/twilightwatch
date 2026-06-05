@@ -174,7 +174,62 @@ app.delete('/api/config/ticket-option/:id', (req, res) => {
   writeJSON(CONFIG_FILE, cfg);
   res.json({ ok: true });
 });
+const EMBEDS_FILE = path.join(DATA_DIR, 'embeds.json');
+
+// GET saved embeds
+app.get('/api/embeds', (req, res) => {
+  const embeds = readJSON(EMBEDS_FILE, []);
+  res.json(embeds);
+});
+
+// POST send + save embed
+app.post('/api/embeds/send', async (req, res) => {
+  const { title, description, color, footer, image, thumbnail, fields, channelId, savedTitle } = req.body;
+  if (!channelId) return res.status(400).json({ ok: false, error: 'No channelId' });
+
+  const { EmbedBuilder } = require('discord.js');
+  const embed = new EmbedBuilder();
+  if (title)       embed.setTitle(title);
+  if (description) embed.setDescription(description);
+  if (color)       embed.setColor(color);
+  if (footer)      embed.setFooter({ text: footer });
+  if (image)       embed.setImage(image);
+  if (thumbnail)   embed.setThumbnail(thumbnail);
+  if (fields?.length) embed.addFields(fields);
+  embed.setTimestamp();
+
+  try {
+    const channel = await client.channels.fetch(channelId);
+    await channel.send({ embeds: [embed] });
+
+    // Save it
+    const embeds = readJSON(EMBEDS_FILE, []);
+    embeds.unshift({
+      id: Date.now().toString(),
+      savedTitle: savedTitle || title || 'Untitled',
+      title, description, color, footer, image, thumbnail, fields,
+      channelId,
+      sentAt: new Date().toISOString()
+    });
+    writeJSON(EMBEDS_FILE, embeds);
+
+    res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
+// DELETE saved embed
+app.delete('/api/embeds/:id', (req, res) => {
+  let embeds = readJSON(EMBEDS_FILE, []);
+  embeds = embeds.filter(e => e.id !== req.params.id);
+  writeJSON(EMBEDS_FILE, embeds);
+  res.json({ ok: true });
+});
+
+
 
 app.listen(PORT, () => {
   console.log(`✅  Dashboard at http://localhost:${PORT}`);
 });
+
